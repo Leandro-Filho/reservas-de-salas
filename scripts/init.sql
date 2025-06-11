@@ -1,0 +1,57 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE IF NOT EXISTS "usuario" (
+  id SERIAL PRIMARY KEY,
+  email TEXT NOT NULL UNIQUE,
+  senha TEXT NOT NULL,
+  empresa_escola TEXT,
+  numero_celular TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "sala" (
+  id SERIAL PRIMARY KEY,
+  local TEXT NOT NULL,
+  descricao TEXT,
+  capacidade INTEGER NOT NULL CHECK (capacidade > 0),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "usuario_sala" (
+  id SERIAL PRIMARY KEY,
+  id_usuario INTEGER NOT NULL REFERENCES "usuario"(id) ON DELETE CASCADE,
+  id_sala INTEGER NOT NULL REFERENCES "sala"(id) ON DELETE CASCADE,
+  UNIQUE(id_usuario, id_sala)
+);
+
+CREATE TABLE IF NOT EXISTS "reserva" (
+  id SERIAL PRIMARY KEY,
+  id_usuario INTEGER NOT NULL REFERENCES "usuario"(id) ON DELETE CASCADE,
+  id_sala INTEGER NOT NULL REFERENCES "sala"(id) ON DELETE RESTRICT,
+  titulo TEXT NOT NULL,
+  data DATE NOT NULL,
+  horario_inicio TIME NOT NULL,
+  horario_final TIME NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT valid_horarios CHECK (horario_final > horario_inicio)
+);
+
+CREATE TABLE IF NOT EXISTS "notificacao" (
+  id SERIAL PRIMARY KEY,
+  titulo TEXT NOT NULL,
+  mensagem TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "usuario_notificacao" (
+  id SERIAL PRIMARY KEY,
+  id_usuario INTEGER NOT NULL REFERENCES "usuario"(id) ON DELETE CASCADE,
+  id_notificacao INTEGER NOT NULL REFERENCES "notificacao"(id) ON DELETE CASCADE,
+  recebido_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  lido BOOLEAN DEFAULT FALSE,
+  UNIQUE(id_usuario, id_notificacao)
+);
