@@ -10,26 +10,29 @@ class Usuario {
 
   // Criar usuário
   static async create(usuario) {
+  try {
     this.validate(usuario);
-    
+
     const query = `
       INSERT INTO usuario (email, senha, empresa_escola, numero_celular)
       VALUES ($1, $2, $3, $4)
       RETURNING *
     `;
-    
+
     const values = [
       usuario.email,
       usuario.senha,
       usuario.empresa_escola || null,
       usuario.numero_celular || null
     ];
-    
 
     const result = await pool.query(query, values);
     return result.rows[0];
-
+  } catch (error) {
+    console.error('Erro ao criar usuário:', error.message);
+    throw new Error('Erro ao criar usuário no banco de dados.');
   }
+}
 
   // Buscar todos os usuários
   static async findAll() {

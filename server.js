@@ -36,6 +36,9 @@ app.get('/', (req, res) => {
   res.render('index'); 
 });
 
+app.get('/salas/visualizar', (req, res) => {
+  res.render('salas/visualizar');
+});
 
 app.use((req, res, next) => {
   res.status(404).render('404'); 
