@@ -8,9 +8,6 @@ O Sistema de Reservas de Salas é uma aplicação web desenvolvida para facilita
 
 - **Autenticação de Usuários**: Login e registro seguro via Supabase Auth.  
 - **Reserva de Salas**: Seleção de salas, datas e horários disponíveis.  
-- **Histórico de Reservas**: Visualização de reservas ativas e passadas.  
-- **Notificações**: Envio de lembretes e confirmações para usuários.  
-- **Gerenciamento Administrativo**: Controle de salas e usuários para administradores.
 
 ## Tecnologias Utilizadas
 
@@ -65,7 +62,7 @@ O Sistema de Reservas de Salas é uma aplicação web desenvolvida para facilita
 1. Inicie o servidor:
 
    ```bash
-   npm start
+   npm start ou node server.js
    ```
 
 2. Acesse a aplicação em:
@@ -78,26 +75,18 @@ O Sistema de Reservas de Salas é uma aplicação web desenvolvida para facilita
 ```bash
 📁 .vscode                  # Configurações específicas do VS Code (como launch.json, settings.json)
 📁 assets                  # Recursos estáticos como imagens e ícones
-    📁 assetsWAD           # Subpasta específica de recursos (possivelmente relacionados a "Web App Design")
 📁 config                  # Arquivos de configuração da aplicação (ex: conexões com o banco)
 📁 controllers             # Lógica de controle entre rotas e modelos (MVC)
 📁 documents               # Documentos auxiliares do projeto
 📁 models                  # Modelos de dados (MVC) e definição de esquemas
 📁 node_modules            # Módulos e dependências instaladas via npm
 📁 routes                  # Definições das rotas da aplicação
-📁 scripts                 # Scripts utilitários e auxiliares
-📁 services                # Lógica de serviços como autenticação, integração com APIs, etc.
-📁 site-projeto-individual # Diretório contendo arquivos do projeto principal ou módulos específicos
-📁 styles                  # Arquivos de estilo CSS
 📁 tests                   # Testes automatizados do projeto
 📄 .env                    # Variáveis de ambiente (configurações sensíveis)
-📄 .env.example            # Exemplo do arquivo .env para configuração
 📄 .gitignore              # Arquivos e pastas ignorados pelo Git
-📄 jest.config.js          # Configuração do framework de testes Jest
 📄 package-lock.json       # Registro de versões exatas das dependências instaladas
 📄 package.json            # Arquivo principal de configuração do projeto Node.js
 📄 readme.md               # Documentação geral do projeto
-📄 rest.http               # Arquivo de testes de requisições REST (usado com VS Code REST Client)
 📄 server.js               # Arquivo principal do servidor backend
 ```
 ## Contribuição
@@ -135,4 +124,4 @@ Este projeto está licenciado sob a Licença MIT.
 
 ## Contato
 
-Para dúvidas ou sugestões, entre em contato com [seu-nome ou email].
+Para dúvidas ou sugestões, entre em contato com leandro.filho@sou.inteli.edu.br.

@@ -428,8 +428,9 @@ Já a parte mais importante, é o código do forms que, como todos as outras tel
 
 ### 4.2 Conclusões e Trabalhos Futuros (Semana 8)
 
+Eu acredito que foi um trabalho de muito conhecimento, tanto na parte da Interface, usando ejs e CSS, quanto o back end e toda a lógica por trás dele, além do banco de dados. Não ficou do jeito idealizado, faltpou tempo e conehcimento para finalizar e por isso ainda vou mexer nele nas férias.
 
-
+Tenho como passos futuros implementar a tela de ver e receber npotificações, ver o histórico de reservas, ter a divisão de ADM e cliente, além de tentar implementar um esquema de "google maps" para que o usuário tenha a visão de onde estão as salas.
 
 
 ## <a name="c5"></a>5. Referências
