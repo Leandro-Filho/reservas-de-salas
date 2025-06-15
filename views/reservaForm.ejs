@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reservar Sala</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    input,
+    select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 1rem;
+      text-decoration: none;
+      color: #28a745;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Reservar Sala: <%= sala.local %></h1>
+    <p><strong>Descrição:</strong> <%= sala.descricao || 'Sem descrição' %></p>
+    <p><strong>Capacidade:</strong> <%= sala.capacidade %> pessoas</p>
+
+    <form method="POST" action="/reservas">
+      <input type="hidden" name="sala_id" value="<%= sala.id %>" />
+      
+      <label for="nome">Seu Nome:</label>
+      <input type="text" id="nome" name="nome" required />
+
+      <label for="horario_inicio">Horário de Início:</label>
+      <input type="time" id="horario_inicio" name="horario_inicio" required />
+
+      <label for="horario_fim">Horário de Fim:</label>
+      <input type="time" id="horario_fim" name="horario_fim" required />
+
+      <button type="submit">Confirmar Reserva</button>
+    </form>
+
+    <a href="/salas/visualizar">← Voltar para salas</a>
+  </div>
+</body>
+</html>

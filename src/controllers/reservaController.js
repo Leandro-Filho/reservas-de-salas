@@ -37,7 +37,7 @@ const reservaController = {
   // Buscar reservas por usuário
   async getByUsuario(req, res) {
     try {
-      const reservas = await Reserva.findByUsuario(req.params.id_user);
+      const reservas = await Reserva.findByUsuario(req.params.id_usuario);
       res.status(200).json(reservas);
     } catch (error) {
       res.status(500).json({ erro: error.message });
@@ -88,8 +88,7 @@ const reservaController = {
         });
       }
       
-      // Usar o método do Sala para verificar disponibilidade
-      // Importando o modelo Sala apenas para este método
+      
       const Sala = require('../models/salaModel');
       const disponivel = await Sala.verificarDisponibilidade(
         id_salas, data, horario_inicio, horario_final
@@ -99,7 +98,39 @@ const reservaController = {
     } catch (error) {
       res.status(500).json({ erro: error.message });
     }
+  },
+
+    async formReservar(req, res) {
+    const { id } = req.params;
+    try {
+      const resultado = await pool.query('SELECT * FROM sala WHERE id = $1', [id]);
+      if (resultado.rows.length === 0) return res.status(404).send('Sala não encontrada');
+
+      const sala = resultado.rows[0];
+        res.render('reservarSala', { sala });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Erro ao carregar formulário de reserva');
+    }
+  },
+
+    async reservar(req, res) {
+  const { sala_id, nome, horario_inicio, horario_fim } = req.body;
+      req.body.id_usuario = null;
+  try {
+    await pool.query(
+      `INSERT INTO reserva (sala_id, nome_usuario, horario_inicio, horario_fim)
+       VALUES ($1, $2, $3, $4)`,
+      [sala_id, nome, horario_inicio, horario_fim]
+    );
+
+    res.redirect('/salas/visualizar');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Erro ao realizar reserva');
   }
+}
+
 };
 
 module.exports = reservaController;

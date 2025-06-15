@@ -175,7 +175,7 @@
             <tbody>
         <% salas.forEach(function(sala) { %>
             <tr>
-            <td><a href="/salas/<%= sala.id %>/reservar"><%= sala.local %></a></td>
+            <td><a href="/salas/reservar/<%= sala.id %>"><%= sala.local %></a></td>
             <td><%= sala.descricao || '-' %></td>
             <td><%= sala.capacidade %></td>
             </tr>

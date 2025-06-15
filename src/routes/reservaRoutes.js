@@ -23,4 +23,8 @@ router.get('/usuario/:id_user', reservaController.getByUsuario);
 // Buscar reservas por sala
 router.get('/sala/:id_sala', reservaController.getBySala);
 
+router.get('/reservar/:id', reservaController.formReservar);
+
+router.post('/reservas', reservaController.reservar);
+
 module.exports = router;
