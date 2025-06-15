@@ -50,46 +50,46 @@ Primeiro será explicado cada entidade e depois a relação entre elas para fica
 ### Entiadades.
 <p align="center">Tabela de Usuários. </p>
 
-<p align="center"> <img src="../assets/assetsWAD/tabela_usuario.png">
+<p align="center"> <img src="../assets/tabela_usuario.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 
 &emsp;&emsp; Essa tabela é referente as informações que serão guardadas quando o futuro usuário do nosso site se cadastrar em nosso site. Os atributos possíveis de ser vistos são: **ID**(número de identificação gerado automaticamente após o cadastro), **Email**, **Senha**, **Empresa/escola** e **Número de celular** são informações colocadas pelo usuários na hora do cadastro. Função de Número de celular, Email e Empresa/escola são mais para um cadastro completo e lugares de contato ou futuro envio de notificações. Já a senha é para segurança de nosso cliente. Outros dois atributos importantes são: **created_at** e o **update_at**. São responsáveis por fixar informações na hora de sua criação, como data e horário e para atualizar as informações iniciais após uma mudança nas informações do usuário, respectivamente. Além de existir a regra de negócios que  terá como função verificar, consultar e interagir com o banco de dados.
 
 <p align="center">Tabela Intermediária de Usuários-Notificação. </p>
 
-<p align="center"> <img src="../assets/assetsWAD/tabela_usuario-notificacao.png">
+<p align="center"> <img src="../assets/tabela_usuario-notificacao.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 
 &emsp;&emsp; Por haver uma relação de N:N entre as tabelas Usuários e Notificação, é necessário, tanto para uma melhor busca nos dados quanto para bons modos do SQL, criar uma tabela intermediária que tem apenas 3 atributos: **ID** próprio, **ID_usuario** e **ID_notificacao**, esses dois responsáveis por apenas fazerem o relacionamento entre eles e essa tabela. Para a pesquisa, apenas necessário colocar o ID da notificação e do usuário para filtrar todas. Muito mais prático e fácil. Além de existir a regra de negócios que  terá como função verificar, consultar e interagir com o banco de dados.
 
 <p align="center">Tabela Intermediária de Usuários-Salas. </p>
 
-<p align="center"> <img src="../assets/assetsWAD/tabela_usuario-salas.png">
+<p align="center"> <img src="../assets/tabela_usuario-salas.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 
 &emsp;&emsp; Por haver uma relação de N:N entre as tabelas Usuários e Salas, é necessário, tanto para uma melhor busca nos dados quanto para bons modos do SQL, criar uma tabela intermediária que tem apenas 3 atributos: **ID** próprio, **ID_usuario** e **ID_salas**, esses dois responsáveis por apenas fazerem o relacionamento entre eles e essa tabela. Para a pesquisa, apenas necessário colocar o ID da notificação e do usuário para filtrar todas. Muito mais prático e fácil. Além de existir a regra de negócios que  terá como função verificar, consultar e interagir com o banco de dados.
 
 <p align="center">Tabela de Notificações. </p>
 
-<p align="center"> <img src="../assets/assetsWAD/tabela_notificacao.png">
+<p align="center"> <img src="../assets/tabela_notificacao.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 
 &emsp;&emsp; Essa tabela se diferencia um pouco das demais porque ela será apenas textos. Seus atributos são: **ID**(número de identificação gerado automaticamente após o envio da notificação), **Título**, como o nome já é auto-explicativo, ela será o título da notificação, **Mensagem**, ela será a descrição e o texto explicando o que será ou para que será a notificação. Outros dois atributos importantes são: **created_at** e o **update_at**. São responsáveis por fixar informações na hora de sua criação, como data e horário e para atualizar as informações iniciais após uma mudança nas informações do usuário, respectivamente. Além de existir a regra de negócios que  terá como função verificar, consultar e interagir com o banco de dados.
 
 <p align="center">Tabela de Salas. </p>
-<p align="center"> <img src="../assets/assetsWAD/tabela_salas.png">
+<p align="center"> <img src="../assets/tabela_salas.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 &emsp;&emsp; Essa tabela é gerada após o cadastro de alguma sala para aluguel, tendo como atributos: **ID** (número de identificação gerado automaticamente após o cadastro das slas no site), **Local**, importantíssimo para que possamos filtrar as salas por locais e só entregar o que o cliente espera, **Descrição**, ela será a descrição sobre a sala apenas, **Capacidade**, também para servir de filtragem, mostrará a quantidade máxima que a sala comporta. Outros dois atributos importantes são: **created_at** e o **update_at**. São responsáveis por fixar informações na hora de sua criação, como data e horário e para atualizar as informações iniciais após uma mudança nas informações do usuário, respectivamente. Além de existir a regra de negócios que  terá como função verificar, consultar e interagir com o banco de dados.
 
 
 <p align="center">Tabela de Reservas. </p>
-<p align="center"> <img src="../assets/assetsWAD/tabela_reserva.png">
+<p align="center"> <img src="../assets/tabela_reserva.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 
 &emsp;&emsp; Essa tabela é a mais complexa, já que existe mais de uma relação entre entidades e com o maior número de entidades. Seus atributos são: **ID** (número de identificação gerado automaticamente após a reserva ser solicitada), **ID_usuario**, será muito importante para que seja guardada a informação de cada solicitação e linkada ao usuário que tentou faze-la, **id_salas**, esse ID é responsável por fazer o relacionamento de dependencia da entidade sala para que a entidade reservas seja criada, **Título**, é o título da reserva, **Data, status,  horario_inicio e  horario_final** terão a mesma função de filtragem, vou explicar. Data será responsável por retirar todas as salas que não tem nesta data, Status é referente se a sala já foi alugada e horario inicio e  horario final será responsável por puxar apenas as salas que os horários entre o começo e o final do aluguel solicitado sejam mostrados. Outros dois atributos importantes são: **created_at** e o **update_at**. São responsáveis por fixar informações na hora de sua criação, como data e horário e para atualizar as informações iniciais após uma mudança nas informações do usuário, respectivamente.Além de existir a regra de negócios que  terá como função verificar, consultar e interagir com o banco de dados.
  
 <p align="center">Diagrama ER Inteiro. </p>
-<p align="center"> <img src="../assets/assetsWAD/DER_inteiro_WAD.png">
+<p align="center"> <img src="../assets/DER_inteiro_WAD.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 &emsp;&emsp; Aqui explicarei as relações entre todas as entidades presentes no diagrama. 
 
@@ -318,7 +318,7 @@ O model user_sala é responsável por validar os dados da relação entre usuár
 O diagrama da arquitetura MVC é uma representação visual da estrutura de uma aplicação que segue o padrão Model-View-Controller. Esse diagrama ilustra como as três camadas principais (Model, View e Controller) se relacionam entre si, facilitando o entendimento do fluxo de dados e das responsabilidades de cada parte do sistema.
 
 <p align="center">Diagrama da Arquitetura MVC. </p>
-<p align="center"> <img src="../assets/assetsWAD/arquiteturaMVC.png">
+<p align="center"> <img src="../assets/arquiteturaMVC.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 
 ### 3.3. Wireframes (Semana 03 - opcional)
@@ -345,18 +345,18 @@ https://docs.google.com/document/d/1qXP6Ura9gz3WSuewzRaSLd4iKVlDks3lSRcuIeQElCI/
 Nesta seção será explicado o que foi desenvolvido no front end, ou seja, a parte visual do nosso site. Ainda todas as telas e funções foi implementado, mas já foi desenvolvido um grande avanço.
 <h2 align= "center">Tela</h2>
 <p align="center">Tela de Login. </p>
-<p align="center"> <img src="../assets/assetsWAD/telaLogin.png">
+<p align="center"> <img src="../assets/telaLogin.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 
 Como podemos ver, a tela de login é uma tela simples. Com cadastro para o nome, senha, email, empresa ou escola vinculado ao usuário e N° de celular. Ao clicar para cadastrar, o usuário será transportado para a tela onde poderá procurar salas cadastradas no banco de dados.
 
 <h2 align= "center">Código</h2>
 <p align="center">Códigos da Tela de Login. </p>
-<p align="center"> <img src="../assets/assetsWAD/codigotelaLogin.png">
+<p align="center"> <img src="../assets/codigotelaLogin.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
-<p align="center"> <img src="../assets/assetsWAD/codigotelaLogin2.png">
+<p align="center"> <img src="../assets/codigotelaLogin2.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
-<p align="center"> <img src="../assets/assetsWAD/codigotelaLogin3.png">
+<p align="center"> <img src="../assets/codigotelaLogin3.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 
 Como é possível ver, o CSS foi implementado dentro do ejs para uma melhor organização das pastas e para caso ocorra um erro na interface, será mais fácil identificar o erro.
@@ -366,26 +366,26 @@ O código basicamente é o CSS ( a estilização da nossa interface) a criação
 
 <h2 align= "center">Tela</h2>
 <p align="center">Tela de Filtragem de Salas. </p>
-<p align="center"> <img src="../assets/assetsWAD/telaFiltragem.png">
+<p align="center"> <img src="../assets/telaFiltragem.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 
 A tela de filtragem de salas é uma tela que permite ao usuário filtar as salas de acordo com o local, horário de início e horário de fim. Após filtrar, o usuário terá como ver as as salas que foram filtardas e reservar (código que faz realmente a reserva não foi feita ainda).
 
 <h2 align= "center">Código</h2>
 <p align="center">Códigos da Tela de Filtragem de Salas. </p>
-<p align="center"> <img src="../assets/assetsWAD/codigotelaFiltragem.png">
+<p align="center"> <img src="../assets/codigotelaFiltragem.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
-<p align="center"> <img src="../assets/assetsWAD/codigotelaFiltragem2.png">
+<p align="center"> <img src="../assets/codigotelaFiltragem2.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
-<p align="center"> <img src="../assets/assetsWAD/codigotelaFiltragem3.png">
+<p align="center"> <img src="../assets/codigotelaFiltragem3.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 <p align="center"> <img src="../assets/assetsWAD/codigotelaFiltragem4.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
-<p align="center"> <img src="../assets/assetsWAD/codigotelaFiltragem5.png">
+<p align="center"> <img src="../assets/codigotelaFiltragem5.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
-<p align="center"> <img src="../assets/assetsWAD/codigotelaFiltragem6.png">
+<p align="center"> <img src="../assets/codigotelaFiltragem6.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
-<p align="center"> <img src="../assets/assetsWAD/codigotelaFiltragem7.png">
+<p align="center"> <img src="../assets/codigotelaFiltragem7.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 
 Novamente, como no código anterior, o CSS foi implementado dentro do ejs.
@@ -396,20 +396,20 @@ O código é feito para criar um forms, onde o usuário pode colocar o local que
 
 <h2 align= "center">Tela</h2>
 <p align="center">Tela de Cadastro de Salas. </p>
-<p align="center"> <img src="../assets/assetsWAD/telaCadastro.png">
+<p align="center"> <img src="../assets/telaCadastro.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 
 No topo superior esquerdo da tela de filtragem, é possível clicar em um link que leva para essa tela. Aqui, é possível cadastrar uma sala para que outras pessoas possam reserva-las.
 
 <h2 align= "center">Código</h2>
 <p align="center">Códigos da Tela de Cadastro de Salas. </p>
-<p align="center"> <img src="../assets/assetsWAD/codigotelaFiltargem.png">
+<p align="center"> <img src="../assets/codigotelaFiltargem.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
-<p align="center"> <img src="../assets/assetsWAD/codigotelaFiltargem2.png">
+<p align="center"> <img src="../assets/codigotelaFiltargem2.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
-<p align="center"> <img src="../assets/assetsWAD/codigotelaFiltargem3.png">
+<p align="center"> <img src="../assets/codigotelaFiltargem3.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
-<p align="center"> <img src="../assets/assetsWAD/codigotelaFiltargem4.png">
+<p align="center"> <img src="../assets/codigotelaFiltargem4.png">
 <br> <sub>Fonte: Autoral (2025)</sub> </p>
 
 No mesmo esquema do código da tela de login, o CSS ficou no ejs para melhor organização e correção de erros.
@@ -421,13 +421,14 @@ Já a parte mais importante, é o código do forms que, como todos as outras tel
 
 ### 4.1 Demonstração do Sistema Web (Semana 8)
 
-*VIDEO: Insira o link do vídeo demonstrativo nesta seção*
-*Descreva e ilustre aqui o desenvolvimento do sistema web completo, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+[Clique aqui para assistir o vídeo do código do site](https://www.youtube.com/watch?v=QvTuMmveXms&t=1s)
+
+[Clique aqui para assistir o vídeo do site em funcionamento](https://www.youtube.com/watch?v=zUuwEFimL_U&t=4s)
+
 
 ### 4.2 Conclusões e Trabalhos Futuros (Semana 8)
 
-*Indique pontos fortes e pontos a melhorar de maneira geral.*
-*Relacione também quaisquer outras ideias que você tenha para melhorias futuras.*
+
 
 
 

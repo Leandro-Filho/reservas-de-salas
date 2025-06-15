@@ -123,6 +123,12 @@ O Sistema de Reservas de Salas é uma aplicação web desenvolvida para facilita
 
 5. Abra um Pull Request.
 
+## links para ver passo a passo do projeto
+
+[Clique aqui para assistir o vídeo do código do site](https://www.youtube.com/watch?v=QvTuMmveXms&t=1s)
+
+[Clique aqui para assistir o vídeo do site em funcionamento](https://www.youtube.com/watch?v=zUuwEFimL_U&t=4s)
+
 ## Licença
 
 Este projeto está licenciado sob a Licença MIT.
